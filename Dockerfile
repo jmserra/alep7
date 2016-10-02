@@ -38,8 +38,14 @@ RUN mkdir -p /run/nginx
 RUN rm /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD www.conf /etc/php7/php-fpm.d/www.conf
+ADD nginx-default.conf /etc/nginx/sites-enabled/default
+ADD php.ini /etc/php7/conf.d/myphp.ini
 
-VOLUME ["/var/www", "/etc/nginx/sites-enabled"]
+# Attach nginx logging to Docker logs
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
+ln -sf /dev/stdout /var/log/nginx/error.log
+
+VOLUME ["/var/www"]
 
 ADD nginx-supervisor.ini /etc/supervisor.d/nginx-supervisor.ini
 

@@ -37,6 +37,7 @@ RUN mkdir -p /run/nginx
 
 RUN rm /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/nginx.conf
+ADD www.conf /etc/php7/php-fpm.d/www.conf
 
 VOLUME ["/var/www", "/etc/nginx/sites-enabled"]
 

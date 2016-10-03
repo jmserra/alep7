@@ -45,6 +45,9 @@ ADD php.ini /etc/php7/conf.d/myphp.ini
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 ln -sf /dev/stdout /var/log/nginx/error.log
 
+#Alias php to php7
+RUN ln -s /usr/bin/php7 /usr/bin/php
+
 VOLUME ["/var/www"]
 
 ADD nginx-supervisor.ini /etc/supervisor.d/nginx-supervisor.ini

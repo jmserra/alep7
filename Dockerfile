@@ -22,6 +22,7 @@ RUN apk upgrade -U && \
     php7-pdo_sqlite \
     php7-sqlite3 \
     php7-pcntl \
+    php7-iconv \
     nginx \
     curl \
     supervisor \
